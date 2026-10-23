@@ -123,7 +123,7 @@ The image and CSV files are generated when the Python script runs successfully.
 ### Step 1: Clone the repository
 
 ```bash
-git clone 
+git clone https://github.com/FarazMemon004/Datheon_Machine_Learning_-_Data_Science_Internship/tree/main/Task2-Real-Estate-Housing-Price-Prediction
 cd California-Housing-Regression
 ```
 
