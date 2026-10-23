@@ -129,8 +129,6 @@ git https://github.com/FarazMemon004/Datheon_Machine_Learning_-_Data_Science_Int
 cd Task1-Iris-Classification
 ```
 
-Replace the URL and folder name with your actual GitHub repository details.
-
 ### 2. Create a virtual environment
 
 ```bash
