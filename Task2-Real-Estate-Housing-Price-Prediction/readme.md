@@ -1,202 +1,178 @@
-# Real Estate Housing Price Prediction 🏡
-
-A Machine Learning regression project that predicts median house values in California using housing and demographic data. This project compares Ordinary Least Squares (OLS), Ridge Regression (L2), and Lasso Regression (L1) to evaluate their predictive performance.
+# 🏡 Real Estate Housing Price Prediction
 
 ## 📌 Project Overview
 
-The objective is to build and compare regression models that estimate median house values based on features such as median income, housing age, number of rooms, population, geographical coordinates, and ocean proximity.
+This project was completed as **Task 2** of the **Datheon Machine Learning & Data Science Internship — 2026**.
 
-The project demonstrates data preprocessing, feature engineering, regularization, model evaluation, and visualization using Python.
+The objective of this project is to predict median house values using the California Housing dataset and compare different regression models to evaluate their predictive performance.
+
+The complete workflow was developed in a **Jupyter Notebook / Google Colab**, covering data preprocessing, feature engineering, model training, hyperparameter tuning, evaluation, and visualization.
 
 ## 🎯 Objectives
 
-- Load and explore the California Housing dataset.
-- Identify missing values and analyze feature correlations.
-- Handle missing numerical and categorical values using imputation.
-- Engineer meaningful features and pairwise interactions.
-- Encode categorical variables using One-Hot Encoding.
-- Standardize numerical features.
-- Compare OLS, Ridge, and Lasso regression models.
-- Tune Ridge and Lasso hyperparameters using GridSearchCV.
-- Evaluate performance using RMSE, MAE, and R².
-- Visualize actual versus predicted values and residual distributions.
+- Explore and understand the housing dataset.
+- Handle missing values using appropriate imputation techniques.
+- Perform feature engineering and create interaction features.
+- Encode categorical variables and scale numerical features.
+- Investigate feature correlations and multicollinearity.
+- Train and compare OLS, Ridge, and Lasso regression models.
+- Optimize model hyperparameters using GridSearchCV.
+- Evaluate model performance using RMSE, MAE, and R².
+- Visualize actual vs. predicted values and residual distributions.
 
 ## 📊 Dataset
 
-**Source:** [California Housing Dataset — GitHub](https://raw.githubusercontent.com/ageron/handson-ml2/master/datasets/housing/housing.csv)
+**Dataset:** California Housing Dataset
 
-The dataset contains 20,640 observations and 10 columns, including the target variable `median_house_value`.
+**Source:** [California Housing Dataset (CSV)](https://raw.githubusercontent.com/ageron/handson-ml2/master/datasets/housing/housing.csv)
 
-### Features
+Dataset details:
 
-- `longitude` — Geographic longitude
-- `latitude` — Geographic latitude
-- `housing_median_age` — Median age of housing units
-- `total_rooms` — Total rooms in the block group
-- `total_bedrooms` — Total bedrooms in the block group
-- `population` — Population of the block group
-- `households` — Number of households
-- `median_income` — Median income in the block group
-- `ocean_proximity` — Categorical indicator of proximity to the ocean
+- **Total Records:** 20,640
+- **Total Columns:** 10
+- **Target Variable:** `median_house_value`
+- **Problem Type:** Supervised Machine Learning — Regression
 
-**Target:** `median_house_value`
+The dataset includes housing-related features such as median income, housing age, total rooms, bedrooms, population, households, geographic coordinates, and ocean proximity.
 
 ## 🛠️ Technologies Used
 
 - Python
-- Pandas and NumPy
-- Matplotlib and Seaborn
+- Google Colab
+- Jupyter Notebook
+- Pandas
+- NumPy
+- Matplotlib
+- Seaborn
 - Scikit-learn
 - Statsmodels
-- PyCharm
 
-## ⚙️ Methodology
+## ⚙️ Project Workflow
 
-### 1. Data Exploration
-- Inspect dataset structure, descriptive statistics, missing values, and duplicates.
-- Generate a correlation heatmap to examine relationships between numerical features.
+### 1. Data Loading and Exploration
+- Loaded the California Housing dataset.
+- Examined dataset dimensions, data types, and statistical summaries.
+- Identified missing values and explored feature relationships.
 
 ### 2. Data Preprocessing
-- Split the dataset into training and testing sets.
-- Impute missing numerical values using the median.
-- Impute missing categorical values using the most frequent category.
-- Encode categorical features using One-Hot Encoding.
-- Standardize numerical features using StandardScaler.
+- Imputed missing numerical values.
+- Handled categorical features through encoding.
+- Prepared numerical features for model training.
 
 ### 3. Feature Engineering
-Create domain-informed ratio features:
+Created additional features to capture useful relationships:
 
-- Rooms per household
-- Bedrooms per room
-- Population per household
+- `rooms_per_household`
+- `bedrooms_per_room`
+- `population_per_household`
 
-Generate pairwise numerical interaction features using PolynomialFeatures.
+Interaction features were also generated to help the models capture relationships between input variables.
 
 ### 4. Model Training
+Implemented and compared the following regression algorithms:
 
-**Ordinary Least Squares (OLS):** Establishes a baseline using linear regression.
+- **OLS Regression:** Ordinary Least Squares baseline.
+- **Ridge Regression:** L2 regularization to reduce the impact of large coefficients.
+- **Lasso Regression:** L1 regularization to encourage sparse coefficients.
 
-**Ridge Regression (L2):** Applies L2 regularization to reduce the impact of large coefficients and help manage multicollinearity.
+### 5. Hyperparameter Tuning
+Used **GridSearchCV** to search for suitable regularization parameters for Ridge and Lasso regression.
 
-**Lasso Regression (L1):** Applies L1 regularization, which can shrink less useful feature coefficients to zero.
-
-Ridge and Lasso hyperparameters are tuned using GridSearchCV with three-fold cross-validation in the initial configuration.
-
-### 5. Model Evaluation
-
-Models are evaluated using:
+### 6. Model Evaluation
+Evaluated model performance using:
 
 - **RMSE:** Root Mean Squared Error
 - **MAE:** Mean Absolute Error
-- **R²:** Coefficient of Determination
+- **R² Score:** Coefficient of Determination
 
-Lower RMSE and MAE indicate smaller prediction errors, while higher R² indicates that the model explains more variation in the target.
+## 📈 Model Performance
 
-### 6. Visualization
-- Correlation heatmap
-- Actual versus predicted plots
-- Residual distribution plots
-- Model performance comparison
+The following are the recorded test-set results from the current experiment.
 
-## 📁 Project Structure
-
-```text
-California-Housing-Regression/
-│
-├── main.py
-├── README.md
-├── correlation_heatmap.png
-├── model_evaluation.png
-├── model_comparison.csv
-└── predictions.csv
-```
-
-The image and CSV files are generated when the Python script runs successfully.
-
-## 🚀 Installation and Usage
-
-### Prerequisites
-- Python 3.11 or newer
-- PyCharm or another Python IDE
-- Internet connection for downloading the dataset
-
-### Step 1: Clone the repository
-
-```bash
-git clone https://github.com/FarazMemon004/Datheon_Machine_Learning_-_Data_Science_Internship/tree/main/Task2-Real-Estate-Housing-Price-Prediction
-cd California-Housing-Regression
-```
-
-Alternatively, download the repository and open the project folder in PyCharm.
-
-### Step 2: Install dependencies
-
-```bash
-python -m pip install pandas numpy matplotlib seaborn scikit-learn statsmodels
-```
-
-### Step 3: Run the project
-
-```bash
-python main.py
-```
-
-### Step 4: Review the results
-
-The program generates:
-
-- `correlation_heatmap.png`
-- `model_evaluation.png`
-- `model_comparison.csv`
-- `predictions.csv`
-
-The evaluation metrics and selected hyperparameters are printed in the console.
-
-## 📈 Results
-
-The project compares OLS, Ridge, and Lasso using a held-out test set.
-
-## 📈 Model Evaluation Results
-
-The models were evaluated on a held-out test dataset using RMSE, MAE, and R².
-
-| Model | RMSE | MAE | R² |
+| Model | RMSE | MAE | R² Score |
 |---|---:|---:|---:|
 | Lasso Regression | 66,504.97 | 47,484.97 | 0.66 |
 | Ridge Regression | 66,506.90 | 47,496.77 | 0.66 |
 | OLS Regression | 179,952.04 | 69,788.74 | -1.47 |
 
-### Key Findings
+**Best recorded model:** Lasso Regression
 
-- **Lasso Regression** achieved the lowest RMSE and MAE among the three models.
-- **Ridge Regression** produced nearly identical performance to Lasso.
-- **OLS Regression** showed substantially worse test performance, with a negative R² score, indicating that its predictions performed worse than a mean-target baseline.
-- Regularization helped produce substantially better results in this experiment.
+Lasso achieved the lowest RMSE and MAE among the three models, although its performance was very similar to Ridge Regression.
 
-### Conclusion
+**Note:** The negative R² score for OLS indicates that it performed worse than a simple test-set mean baseline. This result should be investigated for numerical instability, feature construction, and preprocessing issues before drawing a final conclusion about OLS.
 
-Based on the current test results, Lasso Regression is the best-performing model among the three evaluated models. However, the unusually poor OLS result should be investigated to confirm that all models use consistent preprocessing and that the interaction features are not introducing numerical instability.
+## 📉 Visualizations
 
-The model with the lowest test RMSE is identified as the best-performing model under this evaluation setup.
+The notebook includes visual analysis such as:
 
-## 💡 Key Learning Outcomes
+- Feature correlation heatmap
+- Actual vs. predicted house values
+- Residual distribution plots
+- Model performance comparison
 
-- Building end-to-end regression workflows
-- Data cleaning and imputation
+These visualizations help assess feature relationships, prediction quality, and model errors.
+
+## 🚀 How to Run the Project
+
+### Option 1: Google Colab
+
+1. Open [Google Colab](https://colab.research.google.com/).
+2. Download or clone this repository.
+3. Upload the project `.ipynb` notebook to Colab.
+4. Ensure internet access is available so the dataset can be loaded from its source URL.
+5. Select **Runtime → Run all**.
+6. Review the outputs, evaluation metrics, and visualizations.
+
+### Option 2: Jupyter Notebook
+
+Install the required libraries:
+
+```bash
+pip install pandas numpy matplotlib seaborn scikit-learn statsmodels
+```
+
+Launch Jupyter Notebook:
+
+```bash
+jupyter notebook
+```
+
+Open the project notebook and execute the cells in order.
+
+## 📁 Project Structure
+
+```text
+Task2-Real-Estate-Housing-Price-Prediction/
+│
+├── README.md
+├── California_Housing_Price_Prediction.ipynb
+├──outputs/
+   ├── correlation_heatmap.png
+   ├── model_evaluation.png
+   ├── model_comparison.csv
+   └── predictions.csv
+```
+
+*This is the suggested structure. Keep only files that actually exist in your repository, and update the notebook filename if yours is different.*
+
+## 💡 Key Learnings
+
+- Data exploration and preprocessing
+- Missing-value imputation
 - Feature engineering and interaction terms
-- Categorical encoding and numerical scaling
-- Understanding L1 and L2 regularization
-- Hyperparameter tuning with GridSearchCV
-- Evaluating regression models using multiple metrics
-- Visualizing prediction errors and model performance
+- Regression algorithms and regularization
+- Hyperparameter optimization with GridSearchCV
+- Model evaluation using regression metrics
+- Data visualization and residual analysis
+- Working with notebook-based machine learning projects
 
-## ⚠️ Limitations
 
-- The dataset represents historical housing data, not current market prices.
-- Linear regression models may not capture every nonlinear relationship.
-- Interaction features can increase model complexity and overfitting risk.
-- The target variable has an upper cap, which can limit predictions for expensive properties.
-- The initial three-fold cross-validation setup can be increased to five folds for more robust model selection.
+## 🏢 Internship
+
+**Organization:** Datheon  
+**Program:** Machine Learning & Data Science Internship  
+**Year:** 2026
+
 
 ## 👨‍💻 Author
 
