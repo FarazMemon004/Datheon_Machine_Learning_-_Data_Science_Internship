@@ -140,7 +140,9 @@ I aim to keep the code organized, the documentation clear, and the results repro
 
 **Muhammad Faraz**
 
-Machine Learning & Data Science Intern at Datheon
+Software Engineering | App Developer | AI |
+Machine Learning & Data Science | Python Developer
+
 
 <p>
   <a href="https://github.com/FarazMemon004">
