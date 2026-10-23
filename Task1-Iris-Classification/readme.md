@@ -125,7 +125,7 @@ Decision boundaries visualize how each classifier separates the three flower spe
 ### 1. Clone the repository
 
 ```bash
-git 
+git https://github.com/FarazMemon004/Datheon_Machine_Learning_-_Data_Science_Internship/tree/main/Task1-Iris-Classification
 cd Task1-Iris-Classification
 ```
 
